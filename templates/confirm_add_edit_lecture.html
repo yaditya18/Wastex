@@ -1,0 +1,110 @@
+<!--
+ =========================================================
+ Material Kit PRO - v2.2.0
+ =========================================================
+
+ Product Page: https://www.creative-tim.com/product/material-kit-pro
+ Copyright 2019 Creative Tim (https://www.creative-tim.com)
+
+ Coded by Creative Tim
+
+ =========================================================
+
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+{% extends 'base.html' %}
+
+{% block head %}
+  <title>Add Subject</title>
+{% endblock %}
+  
+{% block body %}
+<body class="login-page sidebar-collapse">
+    <nav class="navbar navbar-color-on-scroll navbar-transparent    fixed-top  navbar-expand-lg " color-on-scroll="100" id="sectionsNav">
+        <div class="container">
+          <div class="navbar-translate">
+            <div class="navbar-brand">
+              Attendance Management
+            </div>
+          </div>
+          <form action="teacher_home" method="GET">
+            <button type="submit" class="btn btn-danger btn-raised btn-lg">Home</button>
+          </form>
+          <form action="add_subject" method="GET">
+            <button type="submit" class="btn btn-danger btn-raised btn-lg">Add Subject</button>
+          </form>
+          <form action="confirm_add_edit_lecture" method="GET">
+            <button type="submit" class="btn btn-danger btn-raised btn-lg">Add Lecture</button>
+          </form>
+          <form action="/logout" method="GET">
+            <button type="submit" class="btn btn-danger btn-raised btn-lg">Log Out</button>
+          </form>
+        </div>
+      </nav>
+  <div class="page-header header-filter" style="background-image: url('../static/img/desk_chair1.jpg'); background-size: cover; background-position: top center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
+          <form class="form" method="POST" action="/confirm_add_edit_lecture">
+            <div class="card card-login">
+              <h2 class="card-title text-center">Add Lecture</h2>
+              <!-- <div class="social-line">
+                <a href="#pablo" class="btn btn-just-icon btn-link btn-white">
+                  <i class="fa fa-google-plus"></i>
+                </a>
+              </div> -->
+              <div class="card-body ">
+                {% with messages = get_flashed_messages() %}
+                  {% if messages: %}
+                    {% for message in messages: %}
+                      <h4>{{ message }}</h4>
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        Department
+                      </span>
+                    </div>
+                    <input name="department" type="text" class="form-control" placeholder="Department..." required>
+                  </div>
+                </span>
+                <span class="bmd-form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        Semester
+                      </span>
+                    </div>
+                    <input name="semester" type="text" class="form-control" placeholder="Semester..." required>
+                  </div>
+                </span>
+                <span class="bmd-form-group">
+                  <div class="input-group" style="display: flex; flex-direction: column;">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        Subject
+                      </span>
+                    </div>
+                    <div>
+                      <input style="width: 90%; margin-left: 15px;" name="subject" type="text" class="form-control" placeholder="Please enter the subject..." required>
+                    </div>
+                  </div>
+                </span>
+                
+              </div>
+              <div class="card-footer justify-content-center">
+                <button type="submit" class="btn btn-danger btn-raised btn-lg">Select Subject</button>
+              </div>
+            </div>
+          </form>
+          <form action="/teacher_home" method="GET">
+            <button type="submit" class="btn btn-danger btn-raised btn-lg">Back</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
